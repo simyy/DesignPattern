@@ -8,8 +8,7 @@
 * singleton
 
 All src is in include file.
-
-xxxx_test is the test file.
+The file of xxxx_test is for test.
 
 ####run
 
