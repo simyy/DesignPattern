@@ -7,6 +7,10 @@
 
 * observer
 * singleton
+* iterator
+* strategy
+* factory
+* abstract factory
 
 >All src is in include file, and the file of xxxx_test is for test.
 
