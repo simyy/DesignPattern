@@ -14,6 +14,7 @@
 * factory
 * abstract factory
 * command
+* mediator
 
 
 
