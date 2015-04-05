@@ -5,14 +5,16 @@
 
 ###Contains
 
+>All src is in the include file, and the file of xxxx_test is for test.
+
 * observer
 * singleton
 * iterator
 * strategy
 * factory
 * abstract factory
+* command
 
->All src is in include file, and the file of xxxx_test is for test.
 
 
 ###run
