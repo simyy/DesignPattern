@@ -15,6 +15,7 @@
 * abstract factory
 * command
 * mediator
+* chain of responsiblity
 
 
 
