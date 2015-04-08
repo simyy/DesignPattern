@@ -16,6 +16,7 @@
 * command
 * mediator
 * chain of responsiblity
+* template
 
 
 
