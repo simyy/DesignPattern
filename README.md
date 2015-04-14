@@ -18,6 +18,8 @@
 * chain of responsiblity
 * template
 * decorator
+* visitor
+* bridge
 
 
 ##run
