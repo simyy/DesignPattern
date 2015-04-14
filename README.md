@@ -17,7 +17,7 @@
 * mediator
 * chain of responsiblity
 * template
-
+* decorator
 
 
 ##run
