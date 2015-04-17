@@ -20,6 +20,7 @@
 * decorator
 * visitor
 * bridge
+* flyweight
 
 
 ##run
