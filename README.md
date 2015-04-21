@@ -21,6 +21,7 @@
 * visitor
 * bridge
 * flyweight
+* interpret
 
 
 ##run
