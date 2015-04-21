@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <stack>
 #include <vector>
 using namespace std;
 
@@ -10,64 +11,72 @@ class Context
 {
 public:
     Context(char* s){
-        for (char* p = s; p != '\0'; ++p)
-            v.push_back(*p);
+        int len = sizeof(s);
+        for (int i = 0; i <= len; i++)
+            v.push_back(*(s+i));
     }
-    void add(char* s) { v.push_back(s); }
-    char* get(int i) 
+    char get(int i) 
     {
         if (i >= v.size()) 
-            return NULL;
+            return 'z';
         else
             return v[i];
     }
-    void set(int i, int value) { v[i] = value; }
     int get_len() { return v.size(); }
 private:
-    vector<char*> v;
+    vector<char> v;
 };
 
 class AbstractExpression
 {
 public:
-    virtual void Interpret(Context* c) = 0;
-protected:
-    int i;
+    virtual int Interpret(Context* c) = 0;
 };
 
 class TerminalExpression : public AbstractExpression
 {
 public:
-    TerminalExpression(int i):AbstractExpression(i) {}
-    void Interpret(Context* c)
+    TerminalExpression(int i) { this->i = i; }
+    int Interpret(Context* c)
     {
-        char* p = c->get(i);
-        if ('a' == *p)
-            ct.set(i, 1);
-        else if ('b' == *p)
-            ct.set(i, 2);
+        char p = c->get(i);
+        if ('a' == p)
+            return 1; 
+        else if ('b' == p)
+            return 2;
         else
-            ct.set(i, 0);
+            return 0;
     }
-
+private:
+    int i;
 };
 
 class NotTerminalExpression : public AbstractExpression
 {
 public:
-    NotTerminalExpression(int i):AbstractExpression(i) {}
-    void Interpret(Context* c)
+    NotTerminalExpression(int i, AbstractExpression* left, AbstractExpression* right) 
     {
-        char* p = c->get(i);
-        if ('+' == *p) 
-            return (*(c->get(i-1))) + (*(c->get(i+1)))
-        else if ('-' == *p)
-            return (*(c->get(i-1))) - (*(c->get(i+1)))
-        else if ('*' == *p)
-            return (*(c->get(i-1))) * (*(c->get(i+1)))
-        else if ('/' == *p)
-            return (*(c->get(i-1))) / (*(c->get(i+1)))
+        this->i = i;
+        this->left = left;
+        this->right = right;
     }
+
+    int Interpret(Context* c)
+    {
+        char p = c->get(i);
+        if ('+' == p) 
+            return left->Interpret(c) + right->Interpret(c); 
+        else if ('-' == p)
+            return left->Interpret(c) - right->Interpret(c); 
+        else if ('*' == p)
+            return left->Interpret(c) * right->Interpret(c); 
+        else if ('/' == p)
+            return left->Interpret(c) / right->Interpret(c); 
+    }
+private:
+    AbstractExpression* left;
+    AbstractExpression* right;
+    int i;
 };
 
 #endif
