@@ -22,6 +22,7 @@
 * bridge
 * flyweight
 * interpret
+* proxy
 
 
 ##run
