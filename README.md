@@ -1,7 +1,6 @@
-# DesignPattern
+# Design Pattern Practice
 
->Design Pattern in C++
-
+> Design Pattern Practice in C++
 
 ## Contains
 
